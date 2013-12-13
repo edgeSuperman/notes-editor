@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="editor" ng-controller="Notes">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>{{notes.title}}</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel='stylesheet prefetch' href='css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/editor.css"/>
+
+    <link href="ue/_css/umeditor.css" type="text/css" rel="stylesheet">
+
+
+</head>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-2">
+        <ul class="nav nav-pills nav-stacked sortable" style="margin-bottom: 5px;">
+            <li ng-repeat="form in notes.posts"
+                class="{{form == current ? 'active':''}} {{form.type_id == 3 ? '':'not-sortable'}}" id="{{form.id}}"  ng-click="setCurrent(form);">
+                <a title="{{form.type_num}}" href="###" >
+                    <button  class="btn btn-danger btn-xs" ng-if="$middle"  ng-click="remove(form)">×</button>
+                    {{getTitle(form)}}
+                </a>
+            </li>
+        </ul>
+        <button class="btn btn-primary" type="button" ng-click="add()">创建行程</button>
+    </div>
+    <div class="col-md-10">
+        <form role="form">
+            <div class="controls" style="margin-bottom: 10px;">
+                <input class="form-control" type="text" ng-model="current.title"/>
+            </div>
+            <div id="myEditor">
+
+            </div>
+        </form>
+    </div>
+</div>
+<script src="lib/angular.min.js"></script>
+<script src="lib/sanitize.min.js"></script>
+
+<script src="lib/jquery.js"></script>
+<script src="lib/jquery-ui.js"></script>
+<script type="text/javascript" charset="utf-8" src="ue/umeditor.config.js"></script>
+
+<script type="text/javascript" charset="utf-8" src="ue/editor_api.js"></script>
+<script type="text/javascript" src="ue/lang/zh-cn/zh-cn.js"></script>
+<script src="js/data.js"></script>
+<script src="js/editor.js"></script>
+<script>
+
+</script>
+</body>
+</html>
