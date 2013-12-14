@@ -102,17 +102,22 @@ var data = {
                 "title": "",
                 "is_system_create": "0"
             }
-        ]}}
+        ]}
+};
 
 var map = {};
 
 var max_type_num = 0;
+var type_num_list = [];
 for(var i = 0; i< data.notes.posts.length; i ++) {
     var post  = data.notes.posts[i];
     post.id = "sub" +  i;
     map[post.id] = post;
     if(post.type_num > max_type_num) {
         max_type_num = post.type_num;
+    }
+    if(post.type_id == 3) {
+        type_num_list.push(post.type_num);
     }
 }
 
@@ -125,7 +130,7 @@ var EMPTY_PATH = {
     "type_id": 3,
     "type_num": 5,
     "pid": "0",
-    "title": "new",
+    "title": "",
     "is_published": 0,
     "is_system_create": "0"
 };
